@@ -31,17 +31,10 @@
     font-family: "Oxygen Mono";
   }
 
-  &__number {
-    display: inline-block;
-    margin: 2px;
-    padding: 4px;
-    font-size: 12rem;
-  }
-
   &__string {
     display: inline-block;
     margin: 2px;
-    padding: 4px;
-    font-size: 4rem;
+    padding: 2px;
+    font-size: 3rem;
   }
 }

@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <Page title="Where is Maple">
       <h1>
-        where's maple on{" "}
+        where is maple on{" "}
         <SingleDatePicker
           date={date} // momentPropTypes.momentObj or null
           onDateChange={(date) => setDate(date)} // PropTypes.func.isRequired
