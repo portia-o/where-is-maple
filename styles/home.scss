@@ -1,0 +1,47 @@
+// This naming format is called BEM.
+// Read more here: http://getbem.com/naming/
+
+.home {
+  &__container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__main {
+    flex: 1;
+    display: flex;
+    padding: 5rem 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__numbers {
+    margin: 0 2px 0 16px;
+  }
+
+  &__numbers:first-child {
+    margin: 0 2px 0 0;
+  }
+
+  &__unit {
+    font-family: "Oxygen Mono";
+  }
+
+  &__number {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px;
+    font-size: 12rem;
+  }
+
+  &__string {
+    display: inline-block;
+    margin: 2px;
+    padding: 4px;
+    font-size: 4rem;
+  }
+}
