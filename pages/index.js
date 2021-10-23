@@ -22,6 +22,7 @@ export default function Home() {
       <h1>
         where is maple on{" "}
         <SingleDatePicker
+          readOnly
           date={date} // momentPropTypes.momentObj or null
           onDateChange={(date) => setDate(date)} // PropTypes.func.isRequired
           focused={focused} // PropTypes.bool
