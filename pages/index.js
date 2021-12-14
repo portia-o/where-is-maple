@@ -16,6 +16,7 @@ export default function Home() {
   const [date, setDate] = useState(today);
   const { who } = whoIsMapleWith(date.toDate());
   const [focused, setFocused] = useState(false);
+  const { isOutsideRange } = true;
 
   return (
     <Page title="Where is Maple">

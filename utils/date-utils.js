@@ -13,6 +13,12 @@ export function whoIsMapleWith(date) {
     } else {
       who = "mom";
     }
+
+    // 2021 special case handling
+    if (week === 52) {
+      who = "dad";
+    }
+    // 2022 weeks
   } else {
     if (week % 2 === 0) {
       who = "dad";
@@ -20,5 +26,11 @@ export function whoIsMapleWith(date) {
       who = "mom";
     }
   }
+
+  // special case for last week of 2021 / first week of 2022, delete after that
+  if (week === 1) {
+    who = "grandma";
+  }
+
   return { who };
 }
