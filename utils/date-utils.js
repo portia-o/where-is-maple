@@ -27,10 +27,10 @@ export function whoIsMapleWith(date) {
     }
   }
 
-  // special case for last week of 2021 / first week of 2022, delete after that
-  if (week === 1) {
-    who = "grandma";
-  }
+  // special case
+  //if (week === 9) {
+  //  who = "mexico";
+  //}
 
   return { who };
 }

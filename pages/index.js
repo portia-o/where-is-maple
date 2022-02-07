@@ -14,7 +14,8 @@ const today = moment();
 
 export default function Home() {
   const [date, setDate] = useState(today);
-  const { who } = whoIsMapleWith(date.toDate());
+  //  const { who } = whoIsMapleWith(date.toDate());
+  const who = "dad";
   const [focused, setFocused] = useState(false);
   const { isOutsideRange } = true;
 
