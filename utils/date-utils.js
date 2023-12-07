@@ -1,36 +1,59 @@
-import getWeekfn from "date-fns/getWeek";
-import getYear from "date-fns/getYear";
+import React from "react";
 
-export function whoIsMapleWith(date) {
-  const week = getWeekfn(date, {
-    weekStartsOn: 1,
-  });
-  let who;
+function getTimeRemaining(endTime) {
+  const endTimeValue = endTime.valueOf();
+  const now = new Date().valueOf();
 
-  if (getYear(date) === 2021) {
-    if (week % 2 === 1) {
-      who = "dad";
+  function checkDate() {
+    if (endTimeValue > now) {
+      const totalSeconds = Math.floor((endTimeValue - now) / 1000);
+      const totalMinutes = Math.floor(totalSeconds / 60);
+      const totalHours = Math.floor(totalMinutes / 60);
+      const totalDays = Math.floor(totalHours / 24);
+      return [totalSeconds, totalMinutes, totalHours, totalDays];
     } else {
-      who = "mom";
-    }
-
-    // 2021 special case handling
-    if (week === 52) {
-      who = "dad";
-    }
-    // 2022 weeks
-  } else {
-    if (week % 2 === 0) {
-      who = "dad";
-    } else {
-      who = "mom";
+      return [0, 0, 0, 0];
     }
   }
 
-  // special case
-  //if (week === 9) {
-  //  who = "mexico";
-  //}
+  const [totalSeconds, totalMinutes, totalHours, totalDays] = checkDate();
+  const hours = totalHours - totalDays * 24;
+  const minutes = totalMinutes - totalDays * 24 * 60 - hours * 60;
+  const seconds =
+    totalSeconds - totalDays * 24 * 60 * 60 - hours * 60 * 60 - minutes * 60;
 
-  return { who };
+  return {
+    hours,
+    minutes,
+    seconds,
+    days: totalDays,
+  };
+}
+
+export function useCountdown(endTime) {
+  const [{ days, hours, minutes, seconds }, setTimeRemaining] = React.useState(
+    getTimeRemaining(endTime)
+  );
+
+  React.useEffect(() => {
+    // Every second, recalculate the remaining time,
+    // and update state to re-render the component with the new time.
+    const interval = setInterval(
+      () => setTimeRemaining(getTimeRemaining(endTime)),
+      1000
+    );
+
+    // If the component unmounts (it won't happen in this app, because it's the root and only component),
+    // we need to clean up after ourselves.
+    return () => {
+      clearInterval(interval);
+    };
+  }, [endTime]);
+
+  return {
+    days,
+    hours,
+    minutes,
+    seconds,
+  };
 }

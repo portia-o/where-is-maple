@@ -1,9 +1,8 @@
 import React from "react";
-import { useState } from "react";
-import { whoIsMapleWith } from "../utils/date-utils";
+import { Number } from "../components/Number";
+import { useCountdown } from "../utils/date-utils";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import { SingleDatePicker } from "react-dates";
 import moment from "moment";
 import { Page } from "../components/Page";
 
@@ -13,29 +12,22 @@ import { Page } from "../components/Page";
 const today = moment();
 
 export default function Home() {
-  const [date, setDate] = useState(today);
-  //  const { who } = whoIsMapleWith(date.toDate());
-  const who = "dad";
-  const [focused, setFocused] = useState(false);
-  const { isOutsideRange } = true;
+  const { days, hours, minutes, seconds } = useCountdown(
+    new Date("2023-12-20T11:11-08:00")
+  );
 
   return (
-    <Page title="Where is Maple">
-      <h1>
-        where is maple on{" "}
-        <SingleDatePicker
-          readOnly
-          date={date} // momentPropTypes.momentObj or null
-          onDateChange={(date) => setDate(date)} // PropTypes.func.isRequired
-          focused={focused} // PropTypes.bool
-          onFocusChange={({ focused }) => setFocused(focused)} // PropTypes.func.isRequired
-          id="your_unique_id" // PropTypes.string.isRequired,
-          numberOfMonths="1"
-        />{" "}
-        ?
-      </h1>
+    <Page title="Countdown to Seattle">
+      <h1>Maple comes home in</h1>
       <section>
-        <span className="home__string">{who}'s</span>
+        <Number number={days} />
+        <span className="home__unit">d</span>
+        <Number number={hours} />
+        <span className="home__unit">h</span>
+        <Number number={minutes} />
+        <span className="home__unit">m</span>
+        <Number number={seconds} />
+        <span className="home__unit">s</span>
       </section>
     </Page>
   );
