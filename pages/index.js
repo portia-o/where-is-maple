@@ -1,8 +1,6 @@
 import React from "react";
 import { Number } from "../components/Number";
 import { useCountdown } from "../utils/date-utils";
-import "react-dates/initialize";
-import "react-dates/lib/css/_datepicker.css";
 import moment from "moment";
 import { Page } from "../components/Page";
 
