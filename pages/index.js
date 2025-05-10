@@ -11,7 +11,7 @@ const today = moment();
 
 export default function Home() {
   const { days, hours, minutes, seconds } = useCountdown(
-    new Date("2025-06-06T11:26-08:00")
+    new Date("2025-06-06T19:07-08:00")
   );
 
   return (
