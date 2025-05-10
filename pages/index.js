@@ -11,12 +11,12 @@ const today = moment();
 
 export default function Home() {
   const { days, hours, minutes, seconds } = useCountdown(
-    new Date("2023-12-14T11:26-08:00")
+    new Date("2025-06-06T11:26-08:00")
   );
 
   return (
-    <Page title="Countdown to Seattle">
-      <h1>Maple comes home in</h1>
+    <Page title="Countdown to Athena">
+      <h1>Maple and Athena will be together in</h1>
       <section>
         <Number number={days} />
         <span className="home__unit">d</span>
