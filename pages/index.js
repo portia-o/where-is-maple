@@ -1,13 +1,9 @@
-import React from "react";
 import { Number } from "../components/Number";
 import { useCountdown } from "../utils/date-utils";
-import moment from "moment";
 import { Page } from "../components/Page";
 
 // For testing
 //const date = new Date("2022-01-15T11:00");
-
-const today = moment();
 
 export default function Home() {
   const { days, hours, minutes, seconds } = useCountdown(
@@ -15,7 +11,7 @@ export default function Home() {
   );
 
   return (
-    <Page title="Countdown to Athena">
+    <Page title="Maple's Countdown">
       <h1>Maple moves to Olympia in</h1>
       <section>
         <Number number={days} />
